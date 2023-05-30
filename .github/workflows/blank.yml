@@ -32,7 +32,7 @@ jobs:
       - name: Install Elan
         run: |
           if ! command -v lean &> /dev/null; then
-            curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf -y | sh
+            curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -y -sSf | sh
             echo 'export PATH="$HOME/.elan/bin:$PATH"' >> $HOME/.bashrc
           fi
 
