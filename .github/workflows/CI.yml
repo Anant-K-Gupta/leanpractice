@@ -31,11 +31,10 @@ jobs:
 
       - name: Install Elan
         run: | 
-          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
-      
-      - name: Set PATH
-        run: |
-          echo "PATH=$HOME/.elan/bin:$PATH" >> $GITHUB_ENV
+          if ! command -v lean &> /dev/null; then
+            curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+            echo "PATH=$HOME/.elan/bin:$PATH" >> $GITHUB_ENV
+          fi
           
       - name: Lean Nightly
         run: elan default leanprover/lean4:nightly
