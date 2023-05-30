@@ -25,10 +25,7 @@ jobs:
       - name: Install Elan
         run: | 
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
-          echo 'export PATH="$HOME/.elan/bin:$PATH"' >> $HOME/.bashrc
-          echo $PATH
       
-        
       - name: Set PATH
         run: |
           echo "PATH=$HOME/.elan/bin:$PATH" >> $GITHUB_ENV
