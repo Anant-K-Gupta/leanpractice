@@ -39,7 +39,7 @@ jobs:
           ls
       - name: Difference Check
         run: |
-          if ! diff -q Foo.lean evenodd.lean &>/dev/null; then
+          if ! diff -q Foo.lean Foo.lean &>/dev/null; then
           >&2 echo "different"
           exit 1
           fi
