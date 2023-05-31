@@ -21,20 +21,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: Cache Elan
-        uses: actions/cache@v2
-        with:
-          path: ~/.elan
-          key: ${{ runner.os }}-elan-${{ hashFiles('lean-toolchain.leanpkg.toml') }}
+
 
 
       - name: Install Elan
         run: | 
-          if ! command -v lean &> /dev/null; then
-            curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
-            echo "PATH=$HOME/.elan/bin:$PATH" >> $GITHUB_ENV
-          fi
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "PATH=$HOME/.elan/bin:$PATH" >> $GITHUB_ENV
+          
           
       - name: Lean Nightly
         run: elan default leanprover/lean4:nightly
