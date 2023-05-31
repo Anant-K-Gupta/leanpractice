@@ -32,5 +32,12 @@ jobs:
           
       - name: Lean Nightly
         run: elan default leanprover/lean4:nightly
+        
       - name: Build Lean code
-        run: lake build Foo
+        run: | 
+          lake build Foo
+          ls
+        
+        
+     
+        
