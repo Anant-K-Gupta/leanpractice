@@ -41,7 +41,7 @@ jobs:
         run: |
           if ! diff -q Foo.lean evenodd.lean &>/dev/null; then
           >&2 echo "different"
-          return 1
+          exit 1
           fi
         
      
